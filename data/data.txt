@@ -1,0 +1,18 @@
+"Cash Me" es una aplicación móvil diseñada para los estudiantes
+de la Universidad Nacional Mayor de San Marcos. A través de esta
+plataforma, los usuarios pueden solicitar intercambios de efectivo
+por dinero digital y viceversa, facilitando transacciones rápidas y
+seguras dentro de la comunidad universitaria. La aplicación requiere
+que los usuarios se registren utilizando un correo electrónico con
+el dominio "@unmsm.edu.pe" para garantizar la exclusividad. Entre
+sus funcionalidades destacan la solicitud de "casheo", un chat para
+comunicación directa, la opción de editar el perfil, y la posibilidad
+de ver en el mapa las solicitudes de otros "cashers".
+
+Las reglas son que un usuario no puede pedir más de una solicitud
+mientras tenga una en estado pendiente.
+Existen 4 estados para una transacción: Pendiente, Aceptado, Rechazado
+y Cancelado.
+Los creadores de Cash Me son:
+Jasmin Huerta, Jean Cardenas, Oscar Pairazaman, Diego Zavala,
+Lestter Muñoa y Erly Rivera.
