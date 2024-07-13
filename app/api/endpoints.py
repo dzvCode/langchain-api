@@ -33,9 +33,10 @@ class Query(BaseModel):
 
 @router.post("/query/")
 async def create_query(query: Query):
+  print(Query)
   try:
       result = qa_chain({"query": query.query})
-      return {"query": query, "answer": result["result"]}
+      return {"query": query.query, "answer": result["result"]}
   except Exception as e:
       raise HTTPException(status_code=500, detail=str(e))
 
@@ -60,7 +61,7 @@ async def interpret_message(query: Query):
   response = completion.choices[0].message.content.strip()
 
   if response in allowed_responses:
-    return {"query": query, "answer": response}
+    return {"query": query.query, "answer": response}
 
   else:
     raise HTTPException(status_code=400, detail=f"Respuesta no válida: {response}")
