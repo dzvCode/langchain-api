@@ -8,18 +8,23 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain import hub
 from openai import OpenAI
+import os
+from dotenv import load_dotenv,find_dotenv
+load_dotenv(find_dotenv())
 
 app = FastAPI()
 router = APIRouter()
+
+OpenAI_key = os.environ.get("OPENAI_API_KEY")
 
 # Initialize once on startup
 loader = TextLoader("./data/data.txt")
 data = loader.load()
 text_splitter = RecursiveCharacterTextSplitter()
 documents = text_splitter.split_documents(data)
-vector = ObjectBox.from_documents(documents, OpenAIEmbeddings(), embedding_dimensions=768)
+vector = ObjectBox.from_documents(documents, OpenAIEmbeddings(openai_api_key=OpenAI_key), embedding_dimensions=768)
 
-llm = ChatOpenAI(model="gpt-3.5-turbo")
+llm = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=OpenAI_key)
 prompt = hub.pull("rlm/rag-prompt")
 qa_chain = RetrievalQA.from_chain_type(
     llm,
